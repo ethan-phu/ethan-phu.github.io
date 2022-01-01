@@ -6,7 +6,7 @@
   <link href="https://tobiashu2021.github.io/atom.xml" rel="self"/>
   
   <link href="https://tobiashu2021.github.io/"/>
-  <updated>2022-01-01T15:58:22.556Z</updated>
+  <updated>2022-01-01T15:59:39.870Z</updated>
   <id>https://tobiashu2021.github.io/</id>
   
   <author>
@@ -17,35 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>我的第一篇文章</title>
-    <link href="https://tobiashu2021.github.io/2022/01/01/hello-world/"/>
-    <id>https://tobiashu2021.github.io/2022/01/01/hello-world/</id>
-    <published>2022-01-01T15:57:25.000Z</published>
-    <updated>2022-01-01T15:58:22.556Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p><h1 id="公式测试"><a href="#公式测试" class="headerlink" title="公式测试"></a>公式测试</h1><p>$$<br>i\hbar\frac{\partial}{\partial t}\psi=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi<br>$$</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a class=&quot;link&quot;   href=&quot;https://hexo.io/&quot; &gt;Hexo&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/a&gt;! This is your very first post. Che</summary>
-      
-    
-    
-    
-    <category term="记录" scheme="https://tobiashu2021.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="hexo" scheme="https://tobiashu2021.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>2021年终总结</title>
     <link href="https://tobiashu2021.github.io/2022/01/01/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     <id>https://tobiashu2021.github.io/2022/01/01/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
     <published>2022-01-01T14:58:36.000Z</published>
-    <updated>2022-01-01T15:58:22.556Z</updated>
+    <updated>2022-01-01T15:59:39.870Z</updated>
     
     <content type="html"><![CDATA[<p>时间飞逝，我的记忆仍停留在达叔离世、袁爷爷离世的时刻，早已忘记了已经到了年底。越是长大时间就过得越快，也不知道是什么地方出了问题，让我在一年的时间长河中，竟确实了太多的珍贵回忆。没有所谓的轰轰烈烈，没有所谓的仗剑走天涯，这一年里，给我的只有平平淡淡。</p><p>想起年初的誓言，存满 5 万块，可是我的目标却不足一半。11 月中旬也走入了实习，可是每天和没有目标一样，不知道学些什么，也不知道自己要做什么。</p>]]></content>
     
