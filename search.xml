@@ -18,18 +18,12 @@
 <li>归纳并输入</li>
 <li>输出发布</li>
 </ol>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://kirashare.oss-cn-beijing.aliyuncs.com/imagesdrawio.png"
-                      alt="工作流步骤"
-                ></p>
 <p>将这个世界的知识和信息有序或有创意的组织起来，提供给人利用，改善人类对于世界的认知，这可能是收集信息的最高进阶了，也是图书管理学存在的意义。在收集信息这一块，我一度使用过各种稍后读的收藏工具如 pocket,cubox,google keep，简悦等，但无疑最后的结果都是工具数据库里的文章是慢慢的多了起来，但是真正深入阅读的文章寥寥无几，真正将文章中的关键信息提取处理记录的更是凤毛麟角，更遑论需要对信息进行二次处理，输出，这种需要我们深度思考的步骤了。在这种困惑中纠结了很久后。偶然的一句话让我触动很深：工具选择不必追求 all in one。我们与其打磨各种收集信息的技巧和工具，不如以终为始，思考收集的信息要如何才能够帮我们做出更有价值的输出。</p>
-<ol>
+<ul>
 <li>简单的对原始信息进行收藏和收集是无价值的。我们需要对信息进行自我理解后再进行收藏。这样收集的信息才是属于我们深度思考过后的信息，才能慢慢为我们所内化。</li>
 <li>在输出的时候，我们往往找不到某个我们看到过的知识点，是因为我们收藏的信息太凌乱，缺乏组织化，让我们不方便我们去对信息进行检索、过滤。所以我们需要对信息进行碎片化收藏，让碎片不断长大的方式，让知识点不断继承、关联、积累。</li>
 <li>针对碎片化的信息以主题和话题进行重新归纳，从中提出我们的感想感悟，然后永久存档。这是信息的第二次处理。为我们输出加深对信息的印象和理解。</li>
-</ol>
+</ul>
 <h2 id="三、我的工具"><a href="#三、我的工具" class="headerlink" title="三、我的工具"></a>三、我的工具</h2><p>为了达到让我们收集的信息为我输出内容服务，我最后的信息处理工具只剩下：Roam-highlighter、flomo、notion、hexo。</p>
 <p><a class="link"   href="https://chrome.google.com/webstore/detail/roam-highlighter/mcoimieglmhdjdoplhpcmifgplkbfibp" >Roam-highlighter<i class="fas fa-external-link-alt"></i></a> 是一个浏览器插件，主要是帮助我在看网页信息的时候，对网页的内容进行关键信息抽取，我就可以进行初筛，在初筛过程中产生的想法和笔记就可以放进 flomo 里。<br><img  
                      lazyload
