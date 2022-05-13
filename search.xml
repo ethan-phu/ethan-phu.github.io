@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ssh自动断开修复方法</title>
+    <url>/2022/05/13/SSH%E9%95%BF%E6%97%B6%E9%97%B4%E4%B8%8D%E4%BD%BF%E7%94%A8%E6%96%AD%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<p>工作中常需要连接着服务器，比如在深度学习训练模型的过程中，需要长时间连接着服务器，在一段时间没有操作后，ssh会自动断开。<br>为了解决这个问题，在网上找到一种配置方法，亲测很久都不会再断开了，在此记录：</p>
+<p>众所周知，ssh是用于与远程服务器建立加密通信通道的，因此配置涉及到服务器和客户端：</p>
+<ul>
+<li>服务端 &#x2F;etc&#x2F;ssh&#x2F;sshd_config</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">+ClientAliveInterval 60 # 每60秒发送一个KeepAlive请求</span><br><span class="line">+ClientAliveCountMax 15 # 总时间为：15*60， 15分钟没有操作，终端断开。</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">以下命令重启 sshd 服务</span></span><br><span class="line">service sshd reload</span><br><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+<ul>
+<li>客户端 ~&#x2F;.ssh&#x2F;config<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改～/.ssh/config配置，对当前用户生效</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这样配置通配所有服务端</span></span><br><span class="line">Host *</span><br><span class="line">	ServerAliveInterval 60</span><br></pre></td></tr></table></figure>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2></li>
+</ul>
+<ol>
+<li><a class="link"   href="https://blog.csdn.net/xiaojingfirst/article/details/81744689" >SSH长时间不使用自动断开解决方案<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在信息碎片中重获高效输出</title>
     <url>/2022/01/11/%E5%9C%A8%E4%BF%A1%E6%81%AF%E7%A2%8E%E7%89%87%E4%B8%AD%E9%87%8D%E8%8E%B7%E9%AB%98%E6%95%88%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>移动信息发展到今天，它的影响，早已渗透到我们生活的方方面面。当初我们得益于它的信息公开、知识共享，我们欢呼雀跃的拥抱互联网，享受互联网。而今天我们又因为它的信息过载，人工智能推荐的过渡滥用导致我们陷入信息茧房，沦为互联网巨头创造利润的工具，而深感困惑，想方设法的逃离。我们要搜索，要订阅，不要算法推荐，作为普通人打破信息茧房对抗互联网巨头控制的唯一方法就是，尽量自我选择信息来源。我们也意识到工具和知识应该是服务于自己，而不是沦为工具和知识的囚徒。做当代信息社会的生产者，而不要做信息社会的消费者。这也是我一直以来想成为的人。我尊崇费曼学习法，我愿意将我学到的一切知识无条件分享，我坚信在我分享的过程中，我得到了深入的思考，对知识进行了一遍新的深入的理解，让它更加深刻的留在我的脑子里。在今天这篇文章里，我将分享我的信息处理工作流。</p>
