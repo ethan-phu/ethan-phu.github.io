@@ -6,7 +6,7 @@
   <link href="https://ethan-phu.github.io/atom.xml" rel="self"/>
   
   <link href="https://ethan-phu.github.io/"/>
-  <updated>2022-05-15T03:42:00.000Z</updated>
+  <updated>2022-05-15T04:01:00.000Z</updated>
   <id>https://ethan-phu.github.io/</id>
   
   <author>
@@ -15,35 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>对个人发展的思考</title>
-    <link href="https://ethan-phu.github.io/2022/05/15/%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95%E7%9A%84%E6%80%9D%E8%80%83/"/>
-    <id>https://ethan-phu.github.io/2022/05/15/%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95%E7%9A%84%E6%80%9D%E8%80%83/</id>
-    <published>2022-05-15T03:40:00.000Z</published>
-    <updated>2022-05-15T03:42:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>目前正值研究生毕业在即，这一段时间我也一直在思考，研究生毕业之后的生涯应该怎么做才能让自己变得更加优秀。也读了很多很多的大佬写的博客文章，幻想着能够从中获得一些经验和启发。一直坚信花时间来整理自己，这是一件值得自己投资的事情。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;目前正值研究生毕业在即，这一段时间我也一直在思考，研究生毕业之后的生涯应该怎么做才能让自己变得更加优秀。也读了很多很多的大佬写的博客文章，幻想着能够从中获得一些经验和启发。一直坚信花时间来整理自己，这是一件值得自己投资的事情。&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="思考" scheme="https://ethan-phu.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    
-    <category term="成长" scheme="https://ethan-phu.github.io/tags/%E6%88%90%E9%95%BF/"/>
-    
-    <category term="反思" scheme="https://ethan-phu.github.io/tags/%E5%8F%8D%E6%80%9D/"/>
-    
-    <category term="思考" scheme="https://ethan-phu.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
   
   <entry>
     <title>ssh自动断开修复方法</title>
