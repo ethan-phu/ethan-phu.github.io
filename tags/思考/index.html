@@ -9,7 +9,7 @@
     
     <title>
         
-            ssh自动断开修复方法 |
+            标签: 思考 |
         
         Ethan Phu
     </title>
@@ -93,7 +93,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/tags"
                             >
                                 标签
@@ -153,7 +153,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/tags">标签</a>
                 </li>
             
@@ -183,231 +183,42 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">ssh自动断开修复方法</span>
+    <div class="tag-container">
+        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;思考
         </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="https://cdn.jsdelivr.net/gh/ethan-phu/imgBeg@main/20220101/male.k954692asow.png">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">Ethan Phu</span>
-                        
-                            <span class="author-label">菜鸟</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-05-13 15:22:00</span>
-        <span class="mobile">2022-05-13 15:22</span>
-    </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E6%8A%80%E6%9C%AF/">技术</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>232 字</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
-        </span>
-    
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <p>工作中常需要连接着服务器，比如在深度学习训练模型的过程中，需要长时间连接着服务器，在一段时间没有操作后，ssh会自动断开。<br>为了解决这个问题，在网上找到一种配置方法，亲测很久都不会再断开了，在此记录：</p>
-<p>众所周知，ssh是用于与远程服务器建立加密通信通道的，因此配置涉及到服务器和客户端：</p>
-<ul>
-<li>服务端 &#x2F;etc&#x2F;ssh&#x2F;sshd_config</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ClientAliveInterval 60 # 每60秒发送一个KeepAlive请求</span><br><span class="line">+ClientAliveCountMax 15 # 总时间为：15*60， 15分钟没有操作，终端断开。</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">以下命令重启 sshd 服务</span></span><br><span class="line">service sshd reload</span><br><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
-<ul>
-<li>客户端 ~&#x2F;.ssh&#x2F;config<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改～/.ssh/config配置，对当前用户生效</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这样配置通配所有服务端</span></span><br><span class="line">Host *</span><br><span class="line">	ServerAliveInterval 60</span><br></pre></td></tr></table></figure>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2></li>
-</ul>
-<ol>
-<li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/xiaojingfirst/article/details/81744689" >SSH长时间不使用自动断开解决方案<i class="fas fa-external-link-alt"></i></a></li>
-</ol>
-
-        </div>
-
-        
-            <div class="post-copyright-info">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li>本文标题：ssh自动断开修复方法</li>
-        <li>本文作者：Ethan Phu</li>
-        <li>创建时间：2022-05-13 15:22:00</li>
-        <li>
-            本文链接：https://ethan-phu.github.io/2022/05/13/SSH长时间不使用断开解决方案/
-        </li>
-        <li>
-            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
-        </li>
-    </ul>
-</div>
-
-            </div>
-        
-
-        
-            <ul class="post-tags-box">
-                
-                    <li class="tag-item">
-                        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item">
-                        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
-
-        
-            <div class="article-nav">
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2022/01/11/%E5%9C%A8%E4%BF%A1%E6%81%AF%E7%A2%8E%E7%89%87%E4%B8%AD%E9%87%8D%E8%8E%B7%E9%AB%98%E6%95%88%E8%BE%93%E5%87%BA/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">在信息碎片中重获高效输出</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
-            <div class="comment-container">
-                <div class="comments-container">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fas fa-comments">&nbsp;评论</i>
-    </div>
-    
-
-        
+        <div class="tag-post-list">
             
-    <div class="valine-container">
-        <script data-pjax
-                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
-        <div id="vcomments"></div>
-        <script data-pjax>
-            function loadValine() {
-                new Valine({
-                    el: '#vcomments',
-                    appId: 'vGroDLFtYNIIJ0zkgcNer2O6-gzGzoHsz',
-                    appKey: 'WB62dAvS3yMUN6CT27Hg3al0',
-                    meta: ['nick', 'mail', 'link'],
-                    avatar: 'wavatar',
-                    enableQQ: true,
-                    placeholder: '快来吐槽吧~',
-                    lang: 'zh-CN'.toLowerCase()
-                });
-
-                function getAuthor(language) {
-                    switch (language) {
-                        case 'en':
-                            return 'Author';
-                        case 'zh-CN':
-                            return '博主';
-                        default:
-                            return 'Master';
-                    }
-                }
-
-                // Add "Author" identify
-                const getValineDomTimer = setInterval(() => {
-                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
-                    if (vcards.length > 0) {
-                        let author = 'Ethan Phu';
-
-                        if (author) {
-                            for (let vcard of vcards) {
-                                const vnick_dom = vcard.querySelector('.vhead .vnick');
-                                const vnick = vnick_dom.innerHTML;
-                                if (vnick === author) {
-                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
-                                }
-                            }
-                        }
-                        clearInterval(getValineDomTimer);
-                    } else {
-                        clearInterval(getValineDomTimer);
-                    }
-                }, 2000);
-            }
-
-            if ('true') {
-                const loadValineTimeout = setTimeout(() => {
-                    loadValine();
-                    clearTimeout(loadValineTimeout);
-                }, 1000);
-            } else {
-                window.addEventListener('DOMContentLoaded', loadValine);
-            }
-        </script>
-    </div>
-
-
-
-        
+<div class="archive-list-container">
+    
+        <section class="archive-item">
+            <div class="archive-item-header">
+                <span class="archive-year">2022</span>
+                <span class="archive-year-post-count">[1]</span>
+            </div>
+            <ul class="article-list">
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2022/05/15/%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95%E7%9A%84%E6%80%9D%E8%80%83/"
+                        >对个人发展的思考</a>
+                        <span class="article-date">05-15</span>
+                    </li>
+                
+            </ul>
+        </section>
     
 </div>
 
-            </div>
-        
+        </div>
+    </div>
+
+    <div class="tag-paginator">
+        <div class="paginator">
+    
+
+    
+</div>
+
     </div>
 </div>
 
@@ -440,27 +251,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item page-aside-toggle">
-                <i class="fas fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fas fa-comment"></i>
-            </li>
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -516,14 +306,6 @@
 
     </div>
 
-    
-        <aside class="page-aside">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">1.</span> <span class="nav-text">参考文献</span></a></li></ol>
-    </div>
-</div>
-        </aside>
     
 
     <div class="image-viewer-container">
@@ -581,8 +363,6 @@
 
 
 <div class="post-scripts pjax">
-    
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
     
 </div>
 
