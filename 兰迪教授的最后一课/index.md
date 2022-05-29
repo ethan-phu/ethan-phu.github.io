@@ -1,4 +1,4 @@
-# Randy Pausch教授的最后一课
+# Randy Pausch 教授的最后一课
 
 
 在重听李沐老师的《[如何读论文](https://www.youtube.com/watch?v=NnSldWhSqvY&list=PLFXJ6jwg0qW-7UM8iUTj3qKqdhbQULP5I&index=4)》这一课的时候，ps:「之前没有好好读，:>)羞耻」。在讲到双栏论文中第一页的第二栏最上面，这个位置在学术界是非常重要的。提到了 Randy Pausch 教授在图形学开创了这一风格的写法，然后提到了他的最后一课「深刻印象」。
