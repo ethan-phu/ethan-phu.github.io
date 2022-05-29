@@ -1,1 +1,15 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>反思 - 标签 - Ethan's Blog</title><link>https://ethan-phu.github.io/tags/%E5%8F%8D%E6%80%9D/</link><description>反思 - 标签 - Ethan's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 15 May 2022 11:40:08 +0000</lastBuildDate><atom:link href="https://ethan-phu.github.io/tags/%E5%8F%8D%E6%80%9D/" rel="self" type="application/rss+xml"/><item><title>对个人发展的思考</title><link>https://ethan-phu.github.io/%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95%E7%9A%84%E6%80%9D%E8%80%83/</link><pubDate>Sun, 15 May 2022 11:40:08 +0000</pubDate><author>ethan</author><guid>https://ethan-phu.github.io/%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95%E7%9A%84%E6%80%9D%E8%80%83/</guid><description>这一段时间我也一直在思考，毕业之后的发展。读了许多大佬写的博客，想着能够从中汲取一些经验和启发。发现大家都有一个共性就是善于总结和对自己的职</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>反思 - 标签 - Ethan&#39;s Blog</title>
+        <link>https://ethan-phu.github.io/tags/%E5%8F%8D%E6%80%9D/</link>
+        <description>反思 - 标签 - Ethan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 15 May 2022 11:40:08 &#43;0000</lastBuildDate><atom:link href="https://ethan-phu.github.io/tags/%E5%8F%8D%E6%80%9D/" rel="self" type="application/rss+xml" /><item>
+    <title>对个人发展的思考</title>
+    <link>https://ethan-phu.github.io/%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95%E7%9A%84%E6%80%9D%E8%80%83/</link>
+    <pubDate>Sun, 15 May 2022 11:40:08 &#43;0000</pubDate>
+    <author>ethan</author>
+    <guid>https://ethan-phu.github.io/%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+    <description><![CDATA[这一段时间我也一直在思考，毕业之后的发展。读了许多大佬写的博客，想着能够从中汲取一些经验和启发。发现大家都有一个共性就是善于总结和对自己的职]]></description>
+</item>
+</channel>
+</rss>
