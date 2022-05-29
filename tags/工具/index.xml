@@ -1,15 +1,1 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>工具 - 标签 - Ethan&#39;s Blog</title>
-        <link>https://ethan-phu.github.io/tags/%E5%B7%A5%E5%85%B7/</link>
-        <description>工具 - 标签 - Ethan&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 13 May 2022 15:22:09 &#43;0000</lastBuildDate><atom:link href="https://ethan-phu.github.io/tags/%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
-    <title>ssh自动断开修复方法</title>
-    <link>https://ethan-phu.github.io/ssh%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%B3%95/</link>
-    <pubDate>Fri, 13 May 2022 15:22:09 &#43;0000</pubDate>
-    <author>ethan</author>
-    <guid>https://ethan-phu.github.io/ssh%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%B3%95/</guid>
-    <description><![CDATA[工作中常需要连接着服务器，比如在深度学习训练模型的过程中，需要长时间连接着服务器，在一段时间没有操作后，ssh会自动断开。 为了解决这个问题，]]></description>
-</item>
-</channel>
-</rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>工具 - 标签 - Ethan's Blog</title><link>https://ethan-phu.github.io/tags/%E5%B7%A5%E5%85%B7/</link><description>工具 - 标签 - Ethan's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 29 May 2022 08:22:09 +0000</lastBuildDate><atom:link href="https://ethan-phu.github.io/tags/%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml"/><item><title>Randy Pausch教授的最后一课</title><link>https://ethan-phu.github.io/%E5%85%B0%E8%BF%AA%E6%95%99%E6%8E%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E8%AF%BE/</link><pubDate>Sun, 29 May 2022 08:22:09 +0000</pubDate><author>ethan</author><guid>https://ethan-phu.github.io/%E5%85%B0%E8%BF%AA%E6%95%99%E6%8E%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E8%AF%BE/</guid><description>在重听李沐老师的《如何读论文》这一课的时候，ps:「之前没有好好读，:&amp;gt;)羞耻」。在讲到双栏论文中第一页的第二栏最上面，这个位置在学术</description></item><item><title>ssh自动断开修复方法</title><link>https://ethan-phu.github.io/ssh%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%B3%95/</link><pubDate>Fri, 13 May 2022 15:22:09 +0000</pubDate><author>ethan</author><guid>https://ethan-phu.github.io/ssh%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%B3%95/</guid><description>工作中常需要连接着服务器，比如在深度学习训练模型的过程中，需要长时间连接着服务器，在一段时间没有操作后，ssh会自动断开。 为了解决这个问题，</description></item></channel></rss>
