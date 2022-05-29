@@ -76,6 +76,7 @@ loss = criterion(m(x), y)
 ```
 
 Transformer 模型也是遵循上面的架构，只不过它的 Encoder 是 N(6)个 EncoderLayer 组成，每个 EncoderLayer 包含一个 Self-Attention SubLayer 层和一个全连接 SubLayer 层。而它的 Decoder 也是 N(6)个 DecoderLayer 组成，每个 DecoderLayer 包含一个 Self-Attention SubLayer 层、Attention SubLayer 层和全连接 SubLayer 层。如下图所示。
+
 ![transformer的结构图](http://fancyerii.github.io/img/transformer_codes/the-annotated-transformer_14_0.png)
 
 ## Encoder 和 Decoder Stack
@@ -247,7 +248,9 @@ print(subsequent_mask(5))
 ## MultiHeadedAttention 多头注意力机制
 
 Attention(包括 Self-Attention 和普通的 Attention)可以堪称一个函数，它的输入是 Query，Key，Value 和 Mask，输出是一个 Tensor。其中输出是 Value 的加权平均，而权重来自 Query 和 Key 的计算。具体的计算如下图所示，计算公式为：$$Attention(Q,K,V) = softmax(\frac{QK^{T}}{\sqrt{d_{k}}})V$$
+
 ![Attention计算图](http://fancyerii.github.io/img/transformer_codes/the-annotated-transformer_33_0.png)
+
 代码为：
 
 ```python
@@ -266,7 +269,9 @@ def attention(query, key, value, mask=None,dropout=None):
 这里主要的疑问是在`score.mask_fill`，主要用于把 mask 是 0 的变成一个很小的数，这样后面经过 softmax 之后的概率就很接近零（但是理论上还是用了很少一点点未来的信息）。
 
 之前介绍过，对于每一个 Head，都是用三个矩阵$W^{Q}$，$W^{K}$，$W^{V}$把输入转换成 Q，K 和 V。然后分别用每一个 Head 进行 Self- Attention 的计算，最后把 N 个 Head 的输出拼接起来，最后用一个矩阵$W^{O}$把输出压缩一下。具体计算框架为：
+
 ![Multi-Head Self-Attention](http://fancyerii.github.io/img/transformer_codes/the-annotated-transformer_38_0.png)
+
 代码如下：
 
 ```python
