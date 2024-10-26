@@ -11,7 +11,3 @@
 2. Zhou X, Hu Y, Wu J, et al. Distribution Bias Aware Collaborative Generative Adversarial Network for Imbalanced Deep Learning in Industrial IoT[J]. IEEE Transactions on Industrial Informatics, 2022.
 3. Liang W, Hu Y, Zhou X, et al. Variational Few-Shot Learning for Microservice-Oriented Intrusion Detection in Distributed Industrial IoT[J]. IEEE Transactions on Industrial Informatics, 2022, 18(8): 5087-5095.
 
-## 相关链接
-
-- [个人知识库](https://wiki-mkdocs-topaz.vercel.app)
-
