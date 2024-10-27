@@ -19,7 +19,7 @@
   - 阅读《build a large language model from scratch》
 - 技术：
   - 学习深度包解析技术
-  - 学习tcp协议相关知识
+  - 学习TCP协议相关知识
 
 ## 项目
 - 流量采集器
