@@ -17,6 +17,7 @@
 ## 学习
 - 读书：
   - 阅读《build a large language model from scratch》
+  - 阅读《真需求》梁宁
 - 技术：
   - 学习深度包解析技术
   - 学习TCP协议相关知识
