@@ -1,5 +1,5 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - Ethan's Blog</title><link>https://ethan-phu.github.io/posts/</link><description>所有文章 | Ethan's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 26 Oct 2024 14:55:10 +0800</lastBuildDate><atom:link href="https://ethan-phu.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>当下的事情</title><link>https://ethan-phu.github.io/%E5%BD%93%E4%B8%8B%E4%B8%93%E6%B3%A8/</link><pubDate>Sat, 26 Oct 2024 14:55:10 +0800</pubDate><author>作者</author><guid>https://ethan-phu.github.io/%E5%BD%93%E4%B8%8B%E4%B8%93%E6%B3%A8/</guid><description><![CDATA[<h1 id="当下">当下</h1>
-<p>本页记录当下我需要专注的事情。更新于2024/10/26 于中国武汉</p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - Ethan's Blog</title><link>https://ethan-phu.github.io/posts/</link><description>所有文章 | Ethan's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Nov 2024 08:10:11 +0800</lastBuildDate><atom:link href="https://ethan-phu.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>当下的事情</title><link>https://ethan-phu.github.io/%E5%BD%93%E4%B8%8B%E4%B8%93%E6%B3%A8/</link><pubDate>Thu, 14 Nov 2024 08:10:11 +0800</pubDate><author>作者</author><guid>https://ethan-phu.github.io/%E5%BD%93%E4%B8%8B%E4%B8%93%E6%B3%A8/</guid><description><![CDATA[<h1 id="当下">当下</h1>
+<p>本页记录当下我需要专注的事情。更新于2024/11/14 于中国武汉</p>
 <h2 id="生活">生活</h2>
 <ul>
 <li>日常工作：练习专注，寻找目标感
@@ -25,8 +25,10 @@
 <ul>
 <li>读书：
 <ul>
-<li>阅读《build a large language model from scratch》</li>
-<li>阅读《真需求》梁宁</li>
+<li>阅读《build a large language model from scratch》 60%</li>
+<li><del>阅读《真需求》梁宁</del></li>
+<li>阅读《亲密关系》罗兰.米勒 20%</li>
+<li>阅读《桥本甲状腺炎90天治疗方案》20%</li>
 </ul>
 </li>
 <li>技术：
