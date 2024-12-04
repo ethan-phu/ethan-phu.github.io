@@ -1,4 +1,4 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Ethan's Blog</title><link>https://ethan-phu.github.io/</link><description>This is my cool site</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Nov 2024 21:20:46 +0800</lastBuildDate><atom:link href="https://ethan-phu.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>2024年第46周, 患上桥本了</title><link>https://ethan-phu.github.io/2024%E5%B9%B4%E7%AC%AC46%E5%91%A8/</link><pubDate>Thu, 14 Nov 2024 21:20:46 +0800</pubDate><author>作者</author><guid>https://ethan-phu.github.io/2024%E5%B9%B4%E7%AC%AC46%E5%91%A8/</guid><description><![CDATA[<p>由于明天要去团建，后天一大早就要赶火车回长沙。所以周报今天先完成。后面每周都会写下我对生活的思考。</p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Ethan's Blog</title><link>https://ethan-phu.github.io/</link><description>This is my cool site</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 03 Dec 2024 18:07:13 +0800</lastBuildDate><atom:link href="https://ethan-phu.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>2024年第46周, 患上桥本了</title><link>https://ethan-phu.github.io/2024%E5%B9%B4%E7%AC%AC46%E5%91%A8/</link><pubDate>Thu, 14 Nov 2024 21:20:46 +0800</pubDate><author>作者</author><guid>https://ethan-phu.github.io/2024%E5%B9%B4%E7%AC%AC46%E5%91%A8/</guid><description><![CDATA[<p>由于明天要去团建，后天一大早就要赶火车回长沙。所以周报今天先完成。后面每周都会写下我对生活的思考。</p>
 <h2 id="本周的生活概述-">本周的生活概述 ：</h2>
 <p>周六，参加了公司组织的年度体检。今年我对去年发现的甲状腺结节问题尤为关注，特意增加了甲功三项B专项检查。体检过程中，医生还建议我增加两项指标检测：抗甲状腺球蛋白抗体(TG-Ab)和甲状腺过氧化物酶抗体(TPO-Ab)，用于诊断是否患有桥本甲状腺炎。当天下午，血液检查结果就可以通过小程序同步查看结果显示我的TG-Ab高达78.14(IU/ml 正常范围0-4.11), TPO-Ab高达28.6(IU/ml 正常范围0-5.63)。</p>
 <p>这对我来说，就是暴击，无疑就已经宣判了我患桥本了。后面仔细想了想，我体检前一天晚上没怎么睡好，且前一阵子不是吃烧烤就是出去喝奶茶，加上从媳妇老家带过来的辣椒酱爱不释手，可能这两个指标飙升和自身的生活习惯有关。在阅读了和桥本相关的医学知识后，感觉我从此要和辣椒无缘了，我可是正宗的湖南人啊，没有辣椒我能活？媳妇还在一旁不停的讲风凉话。不过我媳妇，也就是讲讲，心理比谁都更加重视我的健康。才30岁的我，身体就已经开始下滑，这让我开始反思自己。在这之前，我从来认为吃饭不就是一项任务？随意吃一点就好。以为自己很年轻，有更多的事情比吃饭，睡觉更加重要。现在想想，我真的有点大错特错了，对于现在的我们来说，其实最重要的是照顾好身体，身体才是我们的本钱，没有本钱，怎么去实现自己的价值呢？</p>
@@ -55,6 +55,11 @@
 <li>学习深度包解析技术</li>
 <li>学习TCP协议相关知识</li>
 <li>学习rust相关知识</li>
+</ul>
+</li>
+<li>写作：
+<ul>
+<li>提升写作方面的能力</li>
 </ul>
 </li>
 </ul>
