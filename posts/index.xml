@@ -1,4 +1,355 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - Ethan's Blog</title><link>https://ethan-phu.github.io/posts/</link><description>所有文章 | Ethan's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://ethan-phu.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>2025年展望</title><link>https://ethan-phu.github.io/2025%E5%B9%B4%E5%B1%95%E6%9C%9B/</link><pubDate>Wed, 01 Jan 2025 00:00:00 +0800</pubDate><author>作者</author><guid>https://ethan-phu.github.io/2025%E5%B9%B4%E5%B1%95%E6%9C%9B/</guid><description><![CDATA[<h2 id="2024年回顾">2024年回顾</h2>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - Ethan's Blog</title><link>https://ethan-phu.github.io/posts/</link><description>所有文章 | Ethan's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 18 Jun 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://ethan-phu.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>RAG系列-基础RAG（Simple RAG）</title><link>https://ethan-phu.github.io/%E5%9F%BA%E7%A1%80rag/</link><pubDate>Wed, 18 Jun 2025 00:00:00 +0800</pubDate><author>作者</author><guid>https://ethan-phu.github.io/%E5%9F%BA%E7%A1%80rag/</guid><description><![CDATA[<h1 id="01-基础ragsimple-rag">01. 基础RAG（Simple RAG）</h1>
+<h2 id="方法简介">方法简介</h2>
+<p>基础RAG（Retrieval-Augmented Generation）是最简单的检索增强生成方法。它通过向量化检索获取与用户查询最相关的文档片段，并将这些片段作为上下文输入给大语言模型进行答案生成。</p>
+<h2 id="核心代码">核心代码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">fitz</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_text_from_pdf</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Extracts text from a PDF file and prints the first `num_chars` characters.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    pdf_path (str): Path to the PDF file.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    str: Extracted text from the PDF.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Open the PDF file</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mypdf</span> <span class="o">=</span> <span class="n">fitz</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">all_text</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>  <span class="c1"># Initialize an empty string to store the extracted text</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Iterate through each page in the PDF</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">page_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mypdf</span><span class="o">.</span><span class="n">page_count</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">page</span> <span class="o">=</span> <span class="n">mypdf</span><span class="p">[</span><span class="n">page_num</span><span class="p">]</span>  <span class="c1"># Get the page</span>
+</span></span><span class="line"><span class="cl">        <span class="n">text</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="s2">&#34;text&#34;</span><span class="p">)</span>  <span class="c1"># Extract text from the page</span>
+</span></span><span class="line"><span class="cl">        <span class="n">all_text</span> <span class="o">+=</span> <span class="n">text</span>  <span class="c1"># Append the extracted text to the all_text string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">all_text</span>  <span class="c1"># Return the extracted text</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">chunk_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">overlap</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Chunks the given text into segments of n characters with overlap.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    text (str): The text to be chunked.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    n (int): The number of characters in each chunk.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    overlap (int): The number of overlapping characters between chunks.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    List[str]: A list of text chunks.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">chunks</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize an empty list to store the chunks</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Loop through the text with a step size of (n - overlap)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">n</span> <span class="o">-</span> <span class="n">overlap</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Append a chunk of text from index i to i + n to the chunks list</span>
+</span></span><span class="line"><span class="cl">        <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">chunks</span>  <span class="c1"># Return the list of text chunks</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize the OpenAI client with the base URL and API key</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">base_url</span><span class="o">=</span><span class="s2">&#34;https://api.studio.nebius.com/v1/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;OPENAI_API_KEY&#34;</span><span class="p">)</span>  <span class="c1"># Retrieve the API key from environment variables</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_embeddings</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&#34;BAAI/bge-en-icl&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Creates embeddings for the given text using the specified OpenAI model.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    text (str): The input text for which embeddings are to be created.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    model (str): The model to be used for creating embeddings. Default is &#34;BAAI/bge-en-icl&#34;.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    dict: The response from the OpenAI API containing the embeddings.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Create embeddings for the input text using the specified model</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">input</span><span class="o">=</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">response</span>  <span class="c1"># Return the response containing the embeddings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Calculates the cosine similarity between two vectors.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    vec1 (np.ndarray): The first vector.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    vec2 (np.ndarray): The second vector.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    float: The cosine similarity between the two vectors.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Compute the dot product of the two vectors and divide by the product of their norms</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">semantic_search</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">text_chunks</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Performs semantic search on the text chunks using the given query and embeddings.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    query (str): The query for the semantic search.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    text_chunks (List[str]): A list of text chunks to search through.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    embeddings (List[dict]): A list of embeddings for the text chunks.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    k (int): The number of top relevant text chunks to return. Default is 5.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    List[str]: A list of the top k most relevant text chunks based on the query.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Create an embedding for the query</span>
+</span></span><span class="line"><span class="cl">    <span class="n">query_embedding</span> <span class="o">=</span> <span class="n">create_embeddings</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">embedding</span>
+</span></span><span class="line"><span class="cl">    <span class="n">similarity_scores</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize a list to store similarity scores</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Calculate similarity scores between the query embedding and each text chunk embedding</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">chunk_embedding</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">embeddings</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">similarity_score</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">query_embedding</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">chunk_embedding</span><span class="o">.</span><span class="n">embedding</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">similarity_scores</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">similarity_score</span><span class="p">))</span>  <span class="c1"># Append the index and similarity score</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Sort the similarity scores in descending order</span>
+</span></span><span class="line"><span class="cl">    <span class="n">similarity_scores</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Get the indices of the top k most similar text chunks</span>
+</span></span><span class="line"><span class="cl">    <span class="n">top_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">similarity_scores</span><span class="p">[:</span><span class="n">k</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Return the top k most relevant text chunks</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[</span><span class="n">text_chunks</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">top_indices</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">generate_response</span><span class="p">(</span><span class="n">system_prompt</span><span class="p">,</span> <span class="n">user_message</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&#34;meta-llama/Llama-3.2-3B-Instruct&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Generates a response from the AI model based on the system prompt and user message.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    system_prompt (str): The system prompt to guide the AI&#39;s behavior.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    user_message (str): The user&#39;s message or query.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    model (str): The model to be used for generating the response. Default is &#34;meta-llama/Llama-2-7B-chat-hf&#34;.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">    dict: The response from the AI model.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;system&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">user_message</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">response</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 完整调用流程</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">simple_rag_pipeline</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 1. 提取PDF文本</span>
+</span></span><span class="line"><span class="cl">    <span class="n">extracted_text</span> <span class="o">=</span> <span class="n">extract_text_from_pdf</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 2. 分块处理</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text_chunks</span> <span class="o">=</span> <span class="n">chunk_text</span><span class="p">(</span><span class="n">extracted_text</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 3. 创建嵌入</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">create_embeddings</span><span class="p">(</span><span class="n">text_chunks</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 4. 语义搜索</span>
+</span></span><span class="line"><span class="cl">    <span class="n">top_chunks</span> <span class="o">=</span> <span class="n">semantic_search</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">text_chunks</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 5. 生成回答</span>
+</span></span><span class="line"><span class="cl">    <span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">&#34;You are an AI assistant that strictly answers based on the given context. If the answer cannot be derived directly from the provided context, respond with: &#39;I do not have enough information to answer that.&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">user_prompt</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&#34;Context </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="se">\n</span><span class="s2">=====================================</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">top_chunks</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">user_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">user_prompt</span><span class="si">}</span><span class="se">\n</span><span class="s2">Question: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">ai_response</span> <span class="o">=</span> <span class="n">generate_response</span><span class="p">(</span><span class="n">system_prompt</span><span class="p">,</span> <span class="n">user_prompt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ai_response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="代码讲解">代码讲解</h2>
+<ul>
+<li><strong>文档处理</strong>：使用PyMuPDF提取PDF文本，按字符数分块</li>
+<li><strong>嵌入生成</strong>：使用BAAI/bge-en-icl模型生成文本嵌入</li>
+<li><strong>语义搜索</strong>：计算查询与文档块的余弦相似度，返回最相关的k个片段</li>
+<li><strong>答案生成</strong>：将检索到的上下文与用户问题输入LLM生成答案</li>
+</ul>
+<h2 id="主要特点">主要特点</h2>
+<ul>
+<li>实现简单，易于理解和扩展</li>
+<li>使用余弦相似度进行语义检索</li>
+<li>支持PDF文档处理</li>
+<li>可配置的检索数量k</li>
+</ul>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>FAQ自动问答</li>
+<li>小型企业知识库</li>
+<li>结构化文档检索增强</li>
+<li>基础文档问答系统</li>
+</ul>
+]]></description></item><item><title>2025年展望</title><link>https://ethan-phu.github.io/2025%E5%B9%B4%E5%B1%95%E6%9C%9B/</link><pubDate>Wed, 01 Jan 2025 00:00:00 +0800</pubDate><author>作者</author><guid>https://ethan-phu.github.io/2025%E5%B9%B4%E5%B1%95%E6%9C%9B/</guid><description><![CDATA[<h2 id="2024年回顾">2024年回顾</h2>
 <h3 id="1月-2月安家落户">1月-2月：安家落户</h3>
 <p>终于完成了人生中的一件大事 - 买房。拿到房产证的那一刻，我和妻子都感到无比欣喜。这个新家不仅是一个住所，更是我们对未来生活的美好期待。</p>
 <h3 id="3月-4月平稳前行">3月-4月：平稳前行</h3>
@@ -326,55 +677,4 @@
 <p>结合 <code>subprocess.run</code> 和 环境变量 创建俩个进程。主进程负责监控子进程和重启子进程。
 子进程下通过开启一个新线程（也就是 <code>django</code> 服务）。主线程监控文件变化，如果变化则通过 <code>sys.exit(3)</code> 来退出子进程，父进程获取到退出码不是 3 则继续循环创建子进程，反之则退出整个程序。</p>
 <p>好，到这里。我们勇敢的迈出了第一步，我们继续下一个环节！！！ ヾ(◍°∇°◍)ﾉﾞ</p>
-]]></description></item><item><title>关于周报这种小事</title><link>https://ethan-phu.github.io/%E5%85%B3%E4%BA%8E%E5%BC%80%E5%90%AF%E5%91%A8%E6%8A%A5/</link><pubDate>Thu, 16 Jun 2022 00:00:00 +0800</pubDate><author>作者</author><guid>https://ethan-phu.github.io/%E5%85%B3%E4%BA%8E%E5%BC%80%E5%90%AF%E5%91%A8%E6%8A%A5/</guid><description><![CDATA[<p>从认识到双向链接开始我先使用了 obsidian,然而对于我这种懒癌晚期的人来说，需要结构化的记录，真的不太适合我「取一个好听的名字真的太难了」。当然有一说一，双链这个观点真的是太妙了。</p>
-<p>现在的我已经全面转向了 logseq 来进行笔记记录，不得不说这种支持自定义代码的笔记真的不错「虽然我到目前为止使用最多的是<strong>高级查询</strong>和<strong>TODO</strong>这两个功能，记录笔记的话只是零星记录了几句话，并没有详细的记录或者输出一些东西。」。在 logseq 中是以日期为主线的，这免去了我对要写的内容的抽象主题的负担。</p>
-<h2 id="工作日报周报">工作日报周报</h2>
-<p>首先对任务进行分类，在学习了 Logseq 的高级查询语法并了解其能力之后，我决定使用<code>#tag</code>这种形式来组织个人任务和工作任务，属于工作任务的会标记上<code>#work</code>标签，个人任务就不进行标签。</p>
-<p>首先就是工作，这个是大块内容，我目前使用 logseq 生成<strong>日报&amp;周报</strong>，用于之后提交到绩效评估系统中。</p>
-<h3 id="日报周报代码">日报/周报代码</h3>
-<p>日报和周报代码上只有 inputs[:yesterday]更改成 inputs[:7d]即可。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#+BEGIN_QUERY
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">    :title &#34;查询昨天完成的任务&#34;
-</span></span><span class="line"><span class="cl">    :query [:find (pull ?b [*])
-</span></span><span class="line"><span class="cl">       :in $ ?start ?end
-</span></span><span class="line"><span class="cl">       :where
-</span></span><span class="line"><span class="cl">       [?b :block/marker ?m]
-</span></span><span class="line"><span class="cl">       [?b :block/page ?p]
-</span></span><span class="line"><span class="cl">       [?p :page/journal? true]
-</span></span><span class="line"><span class="cl">       [?p :page/journal-day ?d]
-</span></span><span class="line"><span class="cl">       [(&gt;= ?d ?start)]
-</span></span><span class="line"><span class="cl">       [(&lt;= ?d ?end)]
-</span></span><span class="line"><span class="cl">       [?b :block/path-refs [:block/name &#34;work&#34;]]
-</span></span><span class="line"><span class="cl">       [(= &#34;DONE&#34; ?m)]
-</span></span><span class="line"><span class="cl">   ]
-</span></span><span class="line"><span class="cl">   :inputs [:yesterday :today]
-</span></span><span class="line"><span class="cl">}
-</span></span><span class="line"><span class="cl">#+END_QUERY
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>效果图如下：
-</p>
 ]]></description></item></channel></rss>
